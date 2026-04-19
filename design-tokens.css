@@ -1,0 +1,169 @@
+/* ============================================================
+   Manage AI Remote™ — Design Tokens
+   Source: Design Specification v2.1, March 25, 2026 (Doc 4)
+   URL: https://manageai-remote.vercel.app
+   ============================================================ */
+
+:root {
+  /* ---------- Brand Colors ---------- */
+  --color-cta-blue:    #0070C0; /* Primary buttons, CTAs, interactive links */
+  --color-slide-blue:  #4A90E2; /* Accent highlights, active states, badges, focus rings */
+  --color-brand-blue:  #2E75B6; /* Headings, branded elements */
+  --color-navy:        #0F172A; /* Table headers, dark backgrounds, navbar text */
+  --color-slate:       #5A6C7D; /* Body text, descriptions */
+  --color-muted:       #94A3B8; /* Hint text, metadata, inactive states */
+  --color-border:      #E2E8F0; /* Card borders, dividers, input borders */
+  --color-snow:        #F8FAFC; /* Alternate section backgrounds, stat cards */
+  --color-white:       #FFFFFF;
+
+  /* ---------- Status Colors ---------- */
+  --color-success:     #00DC82; /* Active agents, completed tasks, healthy */
+  --color-info:        #4A90E2; /* Informational badges, FYI notifications */
+  --color-warning:     #FCC800; /* Queued, budget alerts, degraded */
+  --color-error:       #FF6467; /* Error states, failed agents, destructive */
+
+  /* ---------- Typography ---------- */
+  --font-heading:  'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body:     'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:     'SF Mono', 'Fira Code', 'Courier New', monospace;
+
+  --fw-heading:    800;
+  --fw-label:      700;
+  --fw-body:       400;
+
+  /* Body */
+  --text-body-size:    16px;
+  --text-body-lh:      1.7;
+  --text-body-color:   var(--color-slate);
+
+  /* Headings */
+  --text-heading-color: var(--color-navy);
+
+  /* Tiny section labels (the blue ALL CAPS eyebrow) */
+  --text-label-size:      10px;
+  --text-label-tracking:  2.5px;
+  --text-label-color:     var(--color-slide-blue);
+
+  /* Captions / metadata */
+  --text-caption-size:   12px;
+  --text-caption-color:  var(--color-muted);
+
+  /* Mono */
+  --text-mono-size:      13px;
+
+  /* ---------- Spacing Scale (4px base grid) ---------- */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-30: 120px;
+
+  /* ---------- Border Radius ---------- */
+  --radius-button:   6px;
+  --radius-default:  8px;
+  --radius-card:    12px;
+  --radius-modal:   16px;
+  --radius-pill:   999px;
+
+  /* ---------- Breakpoints (for reference — use in @media) ---------- */
+  --bp-sm:  640px;
+  --bp-md:  768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+/* ---------- Base element styles ---------- */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  color: var(--text-body-color);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-heading);
+  color: var(--text-heading-color);
+  margin: 0 0 var(--space-4);
+  line-height: 1.2;
+}
+
+a { color: var(--color-cta-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre, kbd { font-family: var(--font-mono); font-size: var(--text-mono-size); }
+
+/* ---------- Utility classes matching spec rules ---------- */
+
+.section-label {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-label);
+  font-size: var(--text-label-size);
+  text-transform: uppercase;
+  letter-spacing: var(--text-label-tracking);
+  color: var(--text-label-color);
+}
+
+.bg-snow  { background: var(--color-snow); }
+.bg-white { background: var(--color-white); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-6);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background .15s, color .15s, border-color .15s;
+}
+
+.btn-primary {
+  background: var(--color-cta-blue);
+  color: var(--color-white);
+}
+.btn-primary:hover { background: var(--color-brand-blue); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-cta-blue);
+  border-color: var(--color-border);
+}
+.btn-ghost:hover { background: var(--color-snow); }
+
+.btn-link {
+  background: transparent;
+  color: var(--color-cta-blue);
+  padding: 0;
+}
+.btn-link:hover { text-decoration: underline; }
+
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+}
+
+/* Accessibility — respect reduced motion per spec Doc 4 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
